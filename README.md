@@ -1,3 +1,23 @@
+My notes:
+
+- When writing in React, using JSX, a flavor of Javascript
+    - Check out babeljs.io
+    - Looks like HTML-JS mix
+
+- Application is made up of components
+    - how to make one?
+    
+    var Mystery = React.createClass({
+          // here's where we make the component itself
+          render: function () {
+              return(<h3>Unsolved episodes of Unsolved Mysteries</h3>);
+          }
+      });
+
+
+*************************************************
+
+
 ![](http://i.imgur.com/5Bqs5zi.png)
 
 React boilerplate thenewboston tutorials.
