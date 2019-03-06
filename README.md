@@ -1,33 +1,36 @@
 My notes:
 
 - When writing in React, using JSX, a flavor of Javascript
-    - Check out babeljs.io
-    - Looks like HTML-JS mix
+
+  - Check out babeljs.io
+  - Looks like HTML-JS mix
 
 - Application is made up of components
-    - how to make one?
 
-    var Mystery = React.createClass({
-          // here's where we make the component itself
-          render: function () {
-              return(<h3>Unsolved episodes of Unsolved Mysteries</h3>);
-          }
-      });
+  - how to make one?
+
+  var Mystery = React.createClass({
+  // here's where we make the component itself
+  render: function () {
+  return(<h3>Unsolved episodes of Unsolved Mysteries</h3>);
+  }
+  });
 
 - Every component can only return one parent element
-    - To include multiple HTML elements, nest in a div (one parent):
 
-    var Mystery = React.createClass({
-        // here's where we make the component itself
-        render: function() {
-          return (
-            <div>
-              <h3>Simple component one</h3>
-              <p>Nested elements in one component</p>
-            </div>
-          );
-        }
-      });
+  - To include multiple HTML elements, nest in a div (one parent):
+
+  var Mystery = React.createClass({
+  // here's where we make the component itself
+  render: function() {
+  return (
+  <div>
+  <h3>Simple component one</h3>
+  <p>Nested elements in one component</p>
+  </div>
+  );
+  }
+  });
 
 - ReactDOM.render can only render one component; use div trick again if you want to repeat:
 
@@ -36,7 +39,6 @@ My notes:
         <Mystery />
         <Mystery />
         </div>, document.getElementById("example"));
-
 
 - Passing properties to a React component. Example:
 
@@ -51,7 +53,7 @@ My notes:
           );
         }
       });
-
+  
       ReactDOM.render(
         <UnsolvedMystery
           title="Lucy Loo Hoo"
@@ -60,10 +62,9 @@ My notes:
         document.getElementById("example")
       );
 
+- Event 
 
-
-*************************************************
-
+---
 
 ![](http://i.imgur.com/5Bqs5zi.png)
 
@@ -79,12 +80,14 @@ https://github.com/buckyroberts/React-Boilerplate/archive/master.zip
 
 You can also use Gulp to add additional build tasks. To use, follow the instructions below.
 
-Navigate to the root directory and  run the following command:
+Navigate to the root directory and run the following command:
+
 ```
 > npm install
 ```
 
 After modules are installed, you can start watching for SCSS changes using the command:
+
 ```
 > gulp
 ```

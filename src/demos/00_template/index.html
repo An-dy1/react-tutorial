@@ -4,40 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My second React project</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <script src="../../js/react.min.js"></script>
     <script src="../../js/react-dom.min.js"></script>
-    <script src="../../js/browser.min.js"></script>
     <!-- Compiles JSX into JS -->
+    <script src="../../js/browser.min.js"></script>
   </head>
   <body>
     <div id="example"></div>
 
     <script type="text/babel">
-      var UnsolvedMystery = React.createClass({
+      var LoveNote = React.createClass({
+        edit: function() {
+          alert("Editing now");
+        },
+
+        remove: function() {
+          alert("Removing now");
+        },
+
         render: function() {
           return (
-            <div>
-              <h1>{this.props.title}</h1>
-              <h2>{this.props.summary}</h2>
+            <div className="commentContainer">
+              <div className="commentText">{this.props.children}</div>
+              <button onClick={this.edit} className="button-primary">
+                Edit
+              </button>
+              <button onClick={this.remove} className="button-danger">
+                Remove
+              </button>
             </div>
           );
         }
       });
 
       ReactDOM.render(
-        <div>
-          <UnsolvedMystery
-            title="Mystery 1"
-            summary="Mysterious things happening"
-          />
-          <UnsolvedMystery
-            title="Mystery 2"
-            summary="Mysterious things happening"
-          />
-          <UnsolvedMystery
-            title="Mystery 3"
-            summary="Mysterious things happening"
-          />
+        <div className="board">
+          <LoveNote>Here's a pb&j because I love you</LoveNote>
+          <LoveNote>I fed the dog because I love you</LoveNote>
+          <LoveNote>Let's go to the discotheque because I love you</LoveNote>
         </div>,
         document.getElementById("example")
       );
