@@ -29,13 +29,37 @@ My notes:
         }
       });
 
-    - ReactDOM.render can only render one component; use div trick again if you want to repeat:
+- ReactDOM.render can only render one component; use div trick again if you want to repeat:
 
         ReactDOM.render(<div>
         <Mystery />
         <Mystery />
         <Mystery />
         </div>, document.getElementById("example"));
+
+
+- Passing properties to a React component. Example:
+
+    <script type="text/babel">
+      var UnsolvedMystery = React.createClass({
+        render: function() {
+          return (
+            <div>
+              <h1>{this.props.title}</h1>
+              <h2>{this.props.summary}</h2>
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <UnsolvedMystery
+          title="Lucy Loo Hoo"
+          summary="Mysterious things happening"
+        />,
+        document.getElementById("example")
+      );
+
 
 
 *************************************************

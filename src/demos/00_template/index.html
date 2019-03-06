@@ -12,25 +12,35 @@
   <body>
     <div id="example"></div>
 
-    <!-- JSX goes in here -->
     <script type="text/babel">
-      var Mystery = React.createClass({
-        // here's where we make the component itself
+      var UnsolvedMystery = React.createClass({
         render: function() {
           return (
             <div>
-              <h3>Simple component one</h3>
-              <p>Nested element in one component</p>
+              <h1>{this.props.title}</h1>
+              <h2>{this.props.summary}</h2>
             </div>
           );
         }
       });
 
-      ReactDOM.render(<div>
-        <Mystery />
-        <Mystery />
-        <Mystery />
-        </div>, document.getElementById("example"));
+      ReactDOM.render(
+        <div>
+          <UnsolvedMystery
+            title="Mystery 1"
+            summary="Mysterious things happening"
+          />
+          <UnsolvedMystery
+            title="Mystery 2"
+            summary="Mysterious things happening"
+          />
+          <UnsolvedMystery
+            title="Mystery 3"
+            summary="Mysterious things happening"
+          />
+        </div>,
+        document.getElementById("example")
+      );
     </script>
   </body>
 </html>
