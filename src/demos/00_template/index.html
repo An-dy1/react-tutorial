@@ -17,11 +17,20 @@
       var Mystery = React.createClass({
         // here's where we make the component itself
         render: function() {
-          return <h3>Unsolved episodes of Unsolved Mysteries</h3>;
+          return (
+            <div>
+              <h3>Simple component one</h3>
+              <p>Nested element in one component</p>
+            </div>
+          );
         }
       });
 
-      ReactDOM.render(<Mystery />, document.getElementById("example"));
+      ReactDOM.render(<div>
+        <Mystery />
+        <Mystery />
+        <Mystery />
+        </div>, document.getElementById("example"));
     </script>
   </body>
 </html>

@@ -6,13 +6,36 @@ My notes:
 
 - Application is made up of components
     - how to make one?
-    
+
     var Mystery = React.createClass({
           // here's where we make the component itself
           render: function () {
               return(<h3>Unsolved episodes of Unsolved Mysteries</h3>);
           }
       });
+
+- Every component can only return one parent element
+    - To include multiple HTML elements, nest in a div (one parent):
+
+    var Mystery = React.createClass({
+        // here's where we make the component itself
+        render: function() {
+          return (
+            <div>
+              <h3>Simple component one</h3>
+              <p>Nested elements in one component</p>
+            </div>
+          );
+        }
+      });
+
+    - ReactDOM.render can only render one component; use div trick again if you want to repeat:
+
+        ReactDOM.render(<div>
+        <Mystery />
+        <Mystery />
+        <Mystery />
+        </div>, document.getElementById("example"));
 
 
 *************************************************
