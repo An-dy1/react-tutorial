@@ -14,38 +14,34 @@
     <div id="example"></div>
 
     <script type="text/babel">
-      var LoveNote = React.createClass({
-        edit: function() {
-          alert("Editing now");
+      var CheckBox = React.createClass({
+
+        // getInitialState is a built-in function
+        getInitialState() {
+            return {checked: true}
         },
 
-        remove: function() {
-          alert("Removing now");
+        handleChecked: function() {
+            this.setState({checked: !this.state.checked})
         },
 
         render: function() {
+          var message;
+          if (this.state.checked) {
+            message = "checked it!";
+          } else {
+            message = "didn't check it!";
+          }
           return (
-            <div className="commentContainer">
-              <div className="commentText">{this.props.children}</div>
-              <button onClick={this.edit} className="button-primary">
-                Edit
-              </button>
-              <button onClick={this.remove} className="button-danger">
-                Remove
-              </button>
+            <div>
+              <input type="checkbox" onChange={this.handleChecked} defaultChecked={this.state.checked} />
+              <h3>You {message}</h3>
             </div>
           );
         }
       });
 
-      ReactDOM.render(
-        <div className="board">
-          <LoveNote>Here's a pb&j because I love you</LoveNote>
-          <LoveNote>I fed the dog because I love you</LoveNote>
-          <LoveNote>Let's go to the discotheque because I love you</LoveNote>
-        </div>,
-        document.getElementById("example")
-      );
+      ReactDOM.render(<CheckBox />, document.getElementById("example"));
     </script>
   </body>
 </html>

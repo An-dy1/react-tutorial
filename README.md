@@ -62,7 +62,42 @@ My notes:
         document.getElementById("example")
       );
 
-- Event 
+- Event handling and child property:
+
+    var LoveNote = React.createClass({
+        edit: function() {
+          alert("Editing now");
+        },
+
+        remove: function() {
+          alert("Removing now");
+        },
+
+        render: function() {
+          return (
+            <div className="commentContainer">
+              <div className="commentText">{this.props.children}</div>
+              <button onClick={this.edit} className="button-primary">
+                Edit
+              </button>
+              <button onClick={this.remove} className="button-danger">
+                Remove
+              </button>
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <div className="board">
+          <LoveNote>Here's a pb&j because I love you</LoveNote>
+          <LoveNote>I fed the dog because I love you</LoveNote>
+          <LoveNote>Let's go to the discotheque because I love you</LoveNote>
+        </div>,
+        document.getElementById("example")
+      );
+
+- Properties vs States: states can change, properties cannot
 
 ---
 
