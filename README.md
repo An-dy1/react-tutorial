@@ -102,7 +102,6 @@ My notes:
 
     Example: 
 
-        <script type="text/babel">
       var CheckBox = React.createClass({
 
         // getInitialState is a built-in function
@@ -129,6 +128,9 @@ My notes:
           );
         }
       });
+
+- Using states to switch between a view mode and edit mode in simple LoveNotes app
+    - Remember when using states: use getInitialState function
 
 ---
 

@@ -14,34 +14,65 @@
     <div id="example"></div>
 
     <script type="text/babel">
-      var CheckBox = React.createClass({
-
-        // getInitialState is a built-in function
+      var LoveNote = React.createClass({
         getInitialState() {
-            return {checked: true}
+          return { editing: false };
         },
 
-        handleChecked: function() {
-            this.setState({checked: !this.state.checked})
+        edit: function() {
+          this.setState({ editing: true });
+        },
+
+        remove: function() {
+          console.log("Removing now");
+        },
+
+        save: function() {
+          this.setState({ editing: false });
+        },
+
+        renderNormal: function() {
+          return (
+            <div className="commentContainer">
+              <div className="commentText">{this.props.children}</div>
+              <button onClick={this.edit} className="button-primary">
+                Edit
+              </button>
+              <button onClick={this.remove} className="button-danger">
+                Remove
+              </button>
+            </div>
+          );
+        },
+
+        renderForm: function() {
+          return (
+            <div>
+              <textarea defaultValue={this.props.children}></textarea>
+              <button onClick={this.save} className="button-success">
+                Save
+              </button>
+            </div>
+          );
         },
 
         render: function() {
-          var message;
-          if (this.state.checked) {
-            message = "checked it!";
-          } else {
-            message = "didn't check it!";
-          }
-          return (
-            <div>
-              <input type="checkbox" onChange={this.handleChecked} defaultChecked={this.state.checked} />
-              <h3>You {message}</h3>
-            </div>
-          );
+            if (this.state.editing) {
+                return this.renderForm();
+            } else {
+                return this.renderNormal();
+            }
         }
       });
 
-      ReactDOM.render(<CheckBox />, document.getElementById("example"));
+      ReactDOM.render(
+        <div className="board">
+          <LoveNote>Here's a pb&j because I love you</LoveNote>
+          <LoveNote>I fed the dog because I love you</LoveNote>
+          <LoveNote>Let's go to the discotheque because I love you</LoveNote>
+        </div>,
+        document.getElementById("example")
+      );
     </script>
   </body>
 </html>
