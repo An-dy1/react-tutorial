@@ -28,6 +28,8 @@
         },
 
         save: function() {
+          var newLoveNote = this.refs.newNote.value;
+          console.log(newLoveNote);
           this.setState({ editing: false });
         },
 
@@ -48,7 +50,7 @@
         renderForm: function() {
           return (
             <div>
-              <textarea defaultValue={this.props.children}></textarea>
+              <textarea ref="newNote" defaultValue={this.props.children} />
               <button onClick={this.save} className="button-success">
                 Save
               </button>
@@ -57,11 +59,11 @@
         },
 
         render: function() {
-            if (this.state.editing) {
-                return this.renderForm();
-            } else {
-                return this.renderNormal();
-            }
+          if (this.state.editing) {
+            return this.renderForm();
+          } else {
+            return this.renderNormal();
+          }
         }
       });
 
