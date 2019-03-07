@@ -98,6 +98,37 @@ My notes:
       );
 
 - Properties vs States: states can change, properties cannot
+    - Both are ways to customize components
+
+    Example: 
+
+        <script type="text/babel">
+      var CheckBox = React.createClass({
+
+        // getInitialState is a built-in function
+        getInitialState() {
+            return {checked: true}
+        },
+
+        handleChecked: function() {
+            this.setState({checked: !this.state.checked})
+        },
+
+        render: function() {
+          var message;
+          if (this.state.checked) {
+            message = "checked it!";
+          } else {
+            message = "didn't check it!";
+          }
+          return (
+            <div>
+              <input type="checkbox" onChange={this.handleChecked} defaultChecked={this.state.checked} />
+              <h3>You {message}</h3>
+            </div>
+          );
+        }
+      });
 
 ---
 
