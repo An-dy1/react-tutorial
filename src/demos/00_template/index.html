@@ -70,12 +70,14 @@
       var Board = React.createClass({
         getInitialState() {
           return {
-            lovenotes: [
-              "I planted these flowers because I love you",
-              "I made a cordon bleu because I love you",
-              "I bought a puppy because I love you"
-            ]
+            lovenotes: []
           };
+        },
+
+        addLoveNote: function(text) {
+          var loveNotesArray = this.state.lovenotes;
+          lovenotes.push(text);
+          this.setState({ lovenotes: loveNotesArray });
         },
 
         removeLoveNote: function(i) {
@@ -107,8 +109,11 @@
 
         render: function() {
           return (
-            <div className="board">
-              {this.state.lovenotes.map(this.loopEachNote)}
+            <div>
+              <button onClick={this.addLoveNote.bind(null, 'Add love note here')} className="button-info create">Add new love note</button>
+              <div className="board">
+                {this.state.lovenotes.map(this.loopEachNote)}
+              </div>
             </div>
           );
         }
