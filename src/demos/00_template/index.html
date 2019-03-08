@@ -33,6 +33,17 @@
           this.setState({ editing: false });
         },
 
+        renderForm: function() {
+          return (
+            <div>
+              <textarea ref="newNote" defaultValue={this.props.children} />
+              <button onClick={this.save} className="button-success">
+                Save
+              </button>
+            </div>
+          );
+        },
+
         renderNormal: function() {
           return (
             <div className="commentContainer">
@@ -47,17 +58,6 @@
           );
         },
 
-        renderForm: function() {
-          return (
-            <div>
-              <textarea ref="newNote" defaultValue={this.props.children} />
-              <button onClick={this.save} className="button-success">
-                Save
-              </button>
-            </div>
-          );
-        },
-
         render: function() {
           if (this.state.editing) {
             return this.renderForm();
@@ -67,14 +67,30 @@
         }
       });
 
-      ReactDOM.render(
-        <div className="board">
-          <LoveNote>Here's a pb&j because I love you</LoveNote>
-          <LoveNote>I fed the dog because I love you</LoveNote>
-          <LoveNote>Let's go to the discotheque because I love you</LoveNote>
-        </div>,
-        document.getElementById("example")
-      );
+      var Board = React.createClass({
+        getInitialState() {
+          return {
+            lovenotes: [
+              "I planted these flowers because I love you",
+              "I made a cordon bleu because I love you",
+              "I bought a puppy because I love you"
+            ]
+          };
+        },
+
+        render: function() {
+          return (
+            <div className="board">
+              {this.state.lovenotes.map(function(text, i) {
+                return <LoveNote key={i}>{text}</LoveNote>;
+              })
+            }
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(<Board />, document.getElementById("example"));
     </script>
   </body>
 </html>
