@@ -25,11 +25,11 @@
 
         remove: function() {
           console.log("Removing now");
+          this.props.deleteLoveNote(this.props.index);
         },
 
         save: function() {
-          var newLoveNote = this.refs.newNote.value;
-          console.log(newLoveNote);
+          this.props.updateLoveNote(this.refs.newNote.value, this.props.index);
           this.setState({ editing: false });
         },
 
@@ -82,19 +82,24 @@
           console.log("Removing" + i);
           var loveNotesArray = this.state.lovenotes;
           loveNotesArray.splice(i, 1);
-          this.setState({lovenotes: loveNotesArray});
+          this.setState({ lovenotes: loveNotesArray });
         },
 
         updateLoveNote: function(newText, i) {
-          console.log("Updating" + i)
+          console.log("Updating" + i);
           var loveNotesArray = this.state.lovenotes;
           loveNotesArray[i] = newText;
-          this.setState({lovenotes: loveNotesArray});
+          this.setState({ lovenotes: loveNotesArray });
         },
 
         loopEachNote: function(text, i) {
-          return(
-            <LoveNote key={i} index={i}>
+          return (
+            <LoveNote
+              key={i}
+              index={i}
+              updateLoveNoteText={this.updateLoveNote}
+              deleteLoveNote={this.removeLoveNote}
+            >
               {text}
             </LoveNote>
           );
