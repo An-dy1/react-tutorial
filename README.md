@@ -132,6 +132,8 @@ My notes:
 - Using states to switch between a view mode and edit mode in simple LoveNotes app
     - Remember when using states: use getInitialState function
 
+- A property lets you pass data to a child component
+
 ---
 
 ![](http://i.imgur.com/5Bqs5zi.png)

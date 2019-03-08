@@ -78,13 +78,32 @@
           };
         },
 
+        removeLoveNote: function(i) {
+          console.log("Removing" + i);
+          var loveNotesArray = this.state.lovenotes;
+          loveNotesArray.splice(i, 1);
+          this.setState({lovenotes: loveNotesArray});
+        },
+
+        updateLoveNote: function(newText, i) {
+          console.log("Updating" + i)
+          var loveNotesArray = this.state.lovenotes;
+          loveNotesArray[i] = newText;
+          this.setState({lovenotes: loveNotesArray});
+        },
+
+        loopEachNote: function(text, i) {
+          return(
+            <LoveNote key={i} index={i}>
+              {text}
+            </LoveNote>
+          );
+        },
+
         render: function() {
           return (
             <div className="board">
-              {this.state.lovenotes.map(function(text, i) {
-                return <LoveNote key={i}>{text}</LoveNote>;
-              })
-            }
+              {this.state.lovenotes.map(this.loopEachNote)}
             </div>
           );
         }
